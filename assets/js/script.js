@@ -1,8 +1,32 @@
-// Rose = 1 / Main = 2 / cetoine = 3
-
 //Déclaration compteurs de score
 let victoireJoueur = 0
 let victoireOrdi = 0
+
+//Déclenchement par boutons pour la version mobile
+$("button").on('click', function(){   
+    choixJoueur = $(this).attr('class');
+    // Choix Ordinateur
+    console.log(`${choixJoueur}`)
+    choixOrdinateur = (Math.floor(Math.random() * 3) + 1)   
+    if (choixOrdinateur === 1) {
+        choixOrdinateur = 'rose'
+    }
+    else if (choixOrdinateur === 2) {
+        choixOrdinateur = 'main'
+    }
+    else if (choixOrdinateur === 3) {
+        choixOrdinateur = 'cetoine'
+    }    
+    $('#timer').addClass('on')
+            setTimeout(function(){  
+                resultat()
+                affichageOrdi()
+                                    }, 3000)
+            setTimeout(function(){  
+                reset()
+                
+                                    }, 5000)
+})
 
 //Effets produits a l'enfoncement du click (remise a ezéro de la zone de jeu)
 $(".drag").on('mousedown', function(){
@@ -20,8 +44,6 @@ $(".drag").on('mousedown', function(){
 //Effets produits au relachement du click
 $(".drag").on('mouseup', function(){   
     choixJoueur = this.id;
-    /* victoireJoueur
-    victoireOrdi */
     // Choix Ordinateur
     choixOrdinateur = (Math.floor(Math.random() * 3) + 1)   
     if (choixOrdinateur === 1) {
@@ -65,6 +87,7 @@ function resultat() {
                     //Ajout de classe egalité pour l'animation
                     $('#ordiAnimation').addClass(`loose ${choixOrdinateur}`)
                     $('#playerAnimation').addClass(`win ${choixJoueur}`)
+                    //Déclencheur animation Score
                     $('#gameArena').addClass(`score`)
                     //Annonce du résultat
                     $('#resultat p').text(`Vous avez gagné`)
@@ -76,6 +99,7 @@ function resultat() {
                 //Ajout de classe egalité pour l'animation
                 $('#ordiAnimation').addClass(`eq ${choixOrdinateur}`)
                 $('#playerAnimation').addClass(`eq ${choixJoueur}`)
+                //Déclencheur animation Score
                 $('#gameArena').addClass(`score`)
     } else {
         victoireOrdi+=1
@@ -109,10 +133,9 @@ function affichageOrdi() {
         $('#choixOrdi p').text('')
         $('#choixOrdi').addClass('cetoine')
     }
-    
 }
 
-/* reset
+/* reset de jeu
 victoireJoueur = 0
 $('#victoireJoueur').text(`${victoireJoueur}`)
 victoireOrdi = 0

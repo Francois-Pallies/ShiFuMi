@@ -85,6 +85,13 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+button {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+}
 #rose img, #main img, #cetoine img {
     height: 100px;
 }
@@ -645,4 +652,27 @@ body {
 }
 #playerAnimation.loose.main #animationContainer { 
     animation: mainLoose 2s ;
+}
+
+/*******************************************Media Queries***********************************************/
+@media screen and (max-width: 1024px){
+    #zoneChoix button {
+        display: block;
+    }
+    #plateau {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #choixOrdi, #choixJoueur {
+        display: none;
+    }
+    #timer p {
+        font-size: 5em;
+    }
+    #timer.on #resultat p {
+        text-align: center;
+        font-size: 5em;
+    }
 }
