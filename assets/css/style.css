@@ -2,9 +2,82 @@
     margin: 0;
     padding: 0;
 }
-body {
-    background-color: seagreen;
+@font-face {
+    font-family: 'FingerPaint-Regular';
+    src: url(../font/finger-paint/FingerPaint-Regular.ttf);
 }
+@font-face {
+    font-family: 'PrincessSofia-Regular';
+    src: url(../font/princess-sofia/PrincessSofia-Regular.ttf);
+}
+/* ACCUEIL */
+#gameAccueil {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-color: seagreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+#titleAccueil{
+    font-family: PrincessSofia-Regular;
+    font-size: 3em;
+    color : rgba(219, 107, 63, 0.8);
+}
+#textPres{
+    width: 50vw;
+    height: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    color : rgb(43, 18, 8);
+    font-family: FingerPaint-Regular;
+}
+#paraBienvenue{
+    margin: 10px;
+}
+#paraRegle{
+    margin: 10px;
+}
+#btnBegin{
+    padding: 15px;
+    width: 30vw;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: rgba(219, 107, 63, 0.5);
+    font-family: PrincessSofia-Regular;
+    color: rgb(43, 18, 8);
+    font-size: 2.5em;
+    cursor: pointer;
+}
+@keyframes mon_anim{
+    0%{
+        transform: translateY(20vh);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }}
+#textPres
+    {
+    animation-name: mon_anim;
+    animation-duration: 3000ms;
+    animation-delay: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1
+    }
+/* JEU */
 #gameArena {
     position: fixed;
     height: 100vh;
@@ -13,6 +86,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
+    background-color: seagreen;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,10 +101,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 #scoreOrdi {
-    width: 200px;
+    width: 300px;
     height: 200px;
     margin-bottom: 20px;
     display: flex;
@@ -39,7 +114,7 @@ body {
     justify-content: center;
 }
 #scoreJoueur {
-    width: 200px;
+    width: 300px;
     height: 200px;
     margin-top: 20px;
     display: flex;
@@ -64,9 +139,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-#choixOrdi p {
-    font-size: 5em;
-}
 #choixJoueur {
     width: 200px;
     height: 200px;
@@ -85,15 +157,15 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-button {
+#zoneChoix button{
     display: none;
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     background-color: transparent;
 }
 #rose img, #main img, #cetoine img {
-    height: 100px;
+    height: 120px;
 }
 .drag {
     width: 100px;
@@ -101,6 +173,36 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+}
+/*Mise en forme textes*/
+h2{
+    font-family: FingerPaint-Regular;
+    font-size: 2.5em;
+    color: rgb(219, 107, 63);
+    text-shadow: 5px 5px 5px  rgb(43, 18, 8);
+}
+#zoneScore p{
+    font-family: PrincessSofia-Regular;
+    font-size: 5em;
+    color: rgb(219, 107, 63);
+    text-shadow: 5px 5px 5px  rgb(43, 18, 8);
+}
+#choixOrdi p {
+    font-family: FingerPaint-Regular;
+    font-size: 2em;
+    color :rgb(66, 29, 14);
+    text-align: center;
+}
+#choixJoueur p {
+    font-family: FingerPaint-Regular;
+    font-size: 2em;
+    color :rgb(66, 29, 14);
+    text-align: center;
+    padding-top: 25%;
+}
+#resultat p{
+    text-align: center;
 }
 /*Timer*/
 #timer {
@@ -117,7 +219,9 @@ button {
     align-items: center;
     justify-content: center;
     position: absolute;
-    font-size: 30em;
+    font-size: 25em;
+    font-family: FingerPaint-Regular;
+    color : rgba(219, 107, 63, 0.8);
     opacity: 0;
     top: 0;
     right: 0;
@@ -149,7 +253,6 @@ button {
         transform: scale(1);
         opacity: 1;
     }
-
     100% {
         opacity: 0;
         transform: scale(0);
@@ -168,6 +271,8 @@ button {
     font-size: 10em;
     animation: resultatAnim 2s 3s forwards;
 }
+
+/* Backgrounds images */
 #choixJoueur.rose {
     background-repeat: no-repeat;
     background-position: center;
@@ -206,6 +311,8 @@ button {
     background-size: contain;
     transform: rotate(180deg);
 }
+
+/* Animations */
 #fightAnimation {
     position: fixed;
     pointer-events: none;
@@ -213,35 +320,24 @@ button {
     right: 0;
     bottom: 0;
     left: 0;
+    background-image: url(../img/background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0;
 }
 @keyframes fondScores {
     0% {
-        bottom: 0;
         opacity: 0;
-        background-image: url(../img/background.webp);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
     10% {
-        bottom: 0;
         opacity: 1;
-        background-image: url(../img/background.webp);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
     90% {
-        bottom: 0;
         opacity: 1;
-        background-image: url(../img/background.webp);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
     100% {
-        bottom: 0;
         opacity: 0;
-        background-image: url(../img/background.webp);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 }
 #gameArena.score #fightAnimation {
@@ -475,6 +571,7 @@ button {
         z-index: 2;
         background-image: url(../img/cetoineAvecAile.png);
         transform: translateY(0);
+        
     }
     30% {
         z-index: 2;
@@ -653,9 +750,65 @@ button {
 #playerAnimation.loose.main #animationContainer { 
     animation: mainLoose 2s ;
 }
-
+#pageFinAnimation{
+    animation: fadePageFin 2s ;
+}
+@keyframes fadePageFin {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* PAGE DE FIN */
+#pageFin {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} 
+#pageFinAnimation{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-color: seagreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#pageFin p{
+    font-family: FingerPaint-Regular;
+    font-size: 4em;
+    color :rgb(96, 166, 212);
+    text-align: center;
+    text-shadow: 5px 5px 5px  rgb(43, 18, 8);
+}
+#btnRetour{
+    padding: 15px;
+    width: 40vw;
+    border-radius: 50%;
+    margin-top: 20px;
+    background-color: rgba(219, 107, 63, 0.5);
+    font-family: PrincessSofia-Regular;
+    font-size: 2.3em;
+    color: rgb(43, 18, 8);
+    cursor: pointer;
+}
 /*******************************************Media Queries***********************************************/
 @media screen and (max-width: 1024px){
+    #btnBegin{
+        width: 35vw;
+    }
     #zoneChoix button {
         display: block;
     }
@@ -669,10 +822,19 @@ button {
         display: none;
     }
     #timer p {
-        font-size: 5em;
+        font-size: 7em;
+        color :rgb(94, 155, 54);
+        text-shadow: 5px 5px 5px  rgb(43, 18, 8);
     }
     #timer.on #resultat p {
         text-align: center;
         font-size: 5em;
+    }
+    #textPres{
+        width: 75vw;
+        font-size: 1em;
+    }
+    #btnRetour{
+        font-size: 2em;
     }
 }
